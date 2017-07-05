@@ -61,8 +61,8 @@ describe("Thermostat", function() {
   })
 
   it("should have a function to return the power saving mode status", function () {
-    expect(thermostat.getEnergyMode()).toEqual("On");
+    expect(thermostat.getEnergyMode()).toEqual("on");
     thermostat.togglePowerSaving();
-    expect(thermostat.getEnergyMode()).toEqual("Off");
+    expect(thermostat.getEnergyMode()).toEqual("off");
   })
 })
