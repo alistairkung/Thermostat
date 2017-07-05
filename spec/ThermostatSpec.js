@@ -24,24 +24,29 @@ describe("Thermostat", function() {
       thermostat.down(11);
     }).toThrowError("too cold for me")
   })
+
   it("cannot raise temperature above 25 if power saving mode is on", function() {
     expect(function() {
       thermostat.up(6);
     }).toThrowError("too hot for me")
   })
+
   it("can toggle and untoggle powerSavingMode", function() {
     thermostat.togglePowerSaving();
     expect(thermostat.powerSavingMode).toBe(false)
   })
+
   it("should set maxTemp accordingly", function() {
     expect(thermostat.maxTemp).toEqual(25);
     thermostat.togglePowerSaving();
     expect(thermostat.maxTemp).toEqual(32);
   })
+
   it("should reset the temperature to 20", function() {
     thermostat.resetTemp();
-    expect(thermostat.temperature).toEqual(20); 
-  }) 
+    expect(thermostat.temperature).toEqual(20);
+  })
+
   it("should report the energy usage", function() {
     expect(thermostat.energyUsage()).toEqual("medium-usage")
     thermostat.down(8)
@@ -49,5 +54,15 @@ describe("Thermostat", function() {
     thermostat.togglePowerSaving();
     thermostat.up(15);
     expect(thermostat.energyUsage()).toEqual("high-usage")
+  })
+
+  it("should have a function to return the temperature", function() {
+    expect(thermostat.getTemp()).toEqual(20)
+  })
+
+  it("should have a function to return the power saving mode status", function () {
+    expect(thermostat.getEnergyMode()).toEqual("On");
+    thermostat.togglePowerSaving();
+    expect(thermostat.getEnergyMode()).toEqual("Off");
   })
 })
