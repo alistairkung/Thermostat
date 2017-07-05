@@ -38,5 +38,5 @@ Thermostat.prototype.getTemp = function() {
   return this.temperature;
 }
 Thermostat.prototype.getEnergyMode = function() {
-  return this.powerSavingMode ?  "On" :  "Off";
+  return this.powerSavingMode ?  "on" :  "off";
 }
