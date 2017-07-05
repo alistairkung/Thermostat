@@ -46,7 +46,7 @@ describe("Thermostat", function() {
     expect(thermostat.energyUsage()).toEqual("medium-usage")
     thermostat.down(8)
     expect(thermostat.energyUsage()).toEqual("low-usage")
-    thermostat.togglePowerSaving();
+    thermostat.togglePowerSaving;
     thermostat.up(15);
     expect(thermostat.energyUsage()).toEqual("high-usage")
   })
