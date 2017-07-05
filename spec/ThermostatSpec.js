@@ -22,7 +22,20 @@ describe("Thermostat", function() {
   it("should not be able to drop below MIN_TEMP", function (){
     expect(function(){
       thermostat.down(11);
-    }).toThrowError()
+    }).toThrowError("too cold for me")
   })
-
+  it("cannot raise temperature above 25 if power saving mode is on", function() {
+    expect(function() {
+      thermostat.up(6);
+    }).toThrowError("too hot for me")
+  })
+  it("can toggle and untoggle powerSavingMode", function() {
+    thermostat.togglePowerSaving();
+    expect(thermostat.powerSavingMode).toBe(false)
+  })
+  it("should set maxTemp accordingly", function() {
+    expect(thermostat.maxTemp).toEqual(25);
+    thermostat.togglePowerSaving();
+    expect(thermostat.maxTemp).toEqual(32);
+  } )
 })
